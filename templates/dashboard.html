@@ -55,12 +55,12 @@
                                 <div class="card-body">
                                     <span><strong>owner:</strong> {{ file[3] }}</span>
                                     <br>
-                                    {% if file[1] == user[0] %}
+                                    {% if file[1]|string == user[0]|string %}
                                         <span>this file belongs to you, you can download it freely</span>
                                         <hr>
                                         <a class="btn btn-primary btn-sm" href="/download/{{ file[0] }}">download</a>
                                     {% else %}
-                                        <span>this file belongs to {{ file[4] }}, you can't download it</span>
+                                        <span>this file belongs to {{ file[3] }}, you can't download it</span>
                                     {% endif %}
                                 </div>
                             </div>

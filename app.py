@@ -7,7 +7,7 @@ import utils.util as utils
 
 app = Flask(__name__)
 
-conn = sql.connect('database.db', check_same_thread=False)
+conn = sql.connect('db/database.db', check_same_thread=False)
 
 cookies = {}
 
@@ -137,7 +137,7 @@ def download(file_id):
     cur = conn.cursor()
     d_file = cur.execute("SELECT * FROM files WHERE id = ? AND owner = ?", (file_id, user[0])).fetchone()
     if not d_file:
-        return render_template('dashboard.html', error='File not found')
+        return redirect('/dashboard')
 
     h = md5()
     h.update(d_file[2].encode())
